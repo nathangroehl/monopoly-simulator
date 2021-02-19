@@ -1,0 +1,41 @@
+Monopoly Analysis
+
+Purpose: identify the long term odds of each tile being landed on
+	Tiles will have different odds due to community and chance cards and go to jail (tile "Go to Jail", card marked "Go to Jail" or if throw doubles 3 times) moving player to specific location
+Extra: evaluate the value of each tile combining statistics and the mechanics of the game
+
+Chance
+	Advance to Go
+	Advance to Illinois Ave
+	Advance to St. Charles Pl
+	Advance to nearest Utility
+	Advance to nearest Railroad
+	Receive $50
+	Get out of jail free
+	Go back 3 spaces
+	Go to jail
+	Pay $25 per house, Pay $100 per hotel
+	Pay $15
+	Advance to Reading railroad
+	Advance Boardwalk
+	Pay each player $50
+	Receive $150
+	Receive $100
+Community Chest
+	Advance to Go
+	Receive $200
+	Pay $50
+	Receive $50
+	Get out of jail free
+	Go to jail
+	Collect $50 from every player
+	Receive $100
+	Receive $20
+	Collect $10 from every player
+	Collect $100
+	Pay $50
+	Pay $50
+	Receive $25
+	Pay $40 per house and $115 per hotel
+	Receive $10
+	Receive $100
