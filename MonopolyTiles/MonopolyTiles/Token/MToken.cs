@@ -3,7 +3,6 @@
     public class MToken
     {
         public int TileLocation { get; private set; } = 0;
-        public int Lap { get; private set; } = 0;
         public int Turn { get; private set; } = 0;
         public int Moves { get; private set; } = 0;
         public bool InJail { get; private set; } = false;
@@ -14,11 +13,6 @@
             {
                 TileLocation = 10;
                 InJail = true;
-            }
-            else if (TileLocation > goToLocation)
-            {
-                Lap++;
-                TileLocation = goToLocation;
             } 
             else
             {
@@ -43,7 +37,6 @@
             else
             {
                 TileLocation +=tilesToMove - 40;
-                Lap++;
             }
         }
         public void GetOutOfJail()
@@ -69,7 +62,6 @@
         public void NewGamesToken()
         {
             TileLocation = 0;
-            Lap = 0;
             Turn = 0;
             InJail = false;
             TurnsInJail = 0;

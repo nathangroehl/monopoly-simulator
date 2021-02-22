@@ -21,25 +21,24 @@ namespace MonopolyStatistics.Helper
             {
                 while (token.Turn < numberOfTurns)
                 {
-                    if (token.InJail)
-                    {
-                        TryToGetOutOfJail();
-                    }
-                    else
+                    if (!token.InJail)
                     {
                         do
                         {
                             dice.RollDice();
-                            if (dice.NumberOfDoublesInARow > 2)
+                            if (dice.NumberOfDoublesInARow < 3)
+                            {
+                                MovementAndTrack();
+                            }
+                            else
                             {
                                 token.AdvanceTo(30);
                                 dice.ToManyDoubles();
                             }
-                            else
-                            {
-                                MovementAndTrack();
-                            }
                         } while (dice.IsDouble);
+                    } else
+                    {
+                        TryToGetOutOfJail();
                     }
                     token.EndTurn();
                 }
