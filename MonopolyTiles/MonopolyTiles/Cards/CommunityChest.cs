@@ -35,18 +35,17 @@ namespace MonopolyStatistics.Cards
         public string PickCard()
         {
             string cardName = "";
+            Dictionary<int, string> cardResults = new Dictionary<int, string>();
+            cardResults[0] = "Advance to Go";
+            cardResults[1] = "Go To Jail";
             int topcard = ComChestCards[0];
             ComChestCards.RemoveAt(0);
             ComChestCards.Add(topcard);
-            if(topcard == 0)
+            if (topcard < 2)
             {
-                cardName = "Advance to Go";
+                cardName=cardResults[topcard];
             }
-            else if(topcard == 1)
-            {
-                cardName = "Go To Jail";
-            }
-            else if (topcard == 2)
+            else if(topcard==2)
             {
                 ObtainGetOutOfJail();
                 ComChestCards.Remove(2);

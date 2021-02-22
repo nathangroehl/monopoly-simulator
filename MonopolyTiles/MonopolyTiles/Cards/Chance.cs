@@ -35,49 +35,27 @@ namespace MonopolyStatistics.Cards
         public string PickCard()
         {
             string cardName = "";
+            Dictionary<int, string> cardResults = new Dictionary<int, string>();
+            cardResults[0] = "Advance to Go";
+            cardResults[1] = "Go To Jail";
+            cardResults[2] = "Advance to Illinois Avenue";
+            cardResults[3] = "Advance to St Charles Place";
+            cardResults[4] = "Nearest Utility";
+            cardResults[5] = "Nearest Railroad";
+            cardResults[6] = "Go Back Three Spaces";
+            cardResults[7] = "Advance to Reading Railroad";
+            cardResults[8] = "Advance to Board Walk";
             int topcard = ChanceCards[0];
             ChanceCards.RemoveAt(0);
             ChanceCards.Add(topcard);
-            if (topcard == 0)
+            if(topcard<9)
             {
-                cardName = "Advance to Go";
-            }
-            else if (topcard == 1)
-            {
-                cardName = "Go To Jail";
-            }
-            else if (topcard == 2)
-            {
-                ObtainGetOutOfJail();
-                ChanceCards.Remove(2);
-            }
-            else if (topcard == 3)
-            {
-                cardName = "Advance to Illinois Avenue";
-            }
-            else if (topcard == 4)
-            {
-                cardName = "Advance to St Charles Place";
-            }
-            else if (topcard == 5)
-            {
-                cardName = "Nearest Utility";
-            }
-            else if (topcard == 6)
-            {
-                cardName = "Nearest Railroad";
-            }
-            else if (topcard == 7)
-            {
-                cardName = "Go Back Three Spaces";
-            }
-            else if (topcard == 8)
-            {
-                cardName = "Advance to Reading Railroad";
+                cardName = cardResults[topcard];
             }
             else if (topcard == 9)
             {
-                cardName = "Advance to Board Walk";
+                ObtainGetOutOfJail();
+                ChanceCards.Remove(9);
             }
             return cardName;
         }
