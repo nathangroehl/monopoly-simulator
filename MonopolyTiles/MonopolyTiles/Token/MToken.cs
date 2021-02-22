@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MonopolyStatistics.Token
+﻿namespace MonopolyStatistics.Token
 {
     public class MToken
     {
@@ -31,6 +27,10 @@ namespace MonopolyStatistics.Token
         }
         public void Advance(int tilesToMove)
         {
+            if(tilesToMove<0)
+            {
+                TileLocation += tilesToMove;
+            }
             if(TileLocation+tilesToMove==30)
             {
                 TileLocation = 10;
@@ -38,11 +38,11 @@ namespace MonopolyStatistics.Token
             }
             else if (TileLocation+tilesToMove<40)
             {
-                TileLocation = TileLocation + tilesToMove;
+                TileLocation +=tilesToMove;
             }
             else
             {
-                TileLocation = TileLocation + tilesToMove - 40;
+                TileLocation +=tilesToMove - 40;
                 Lap++;
             }
         }

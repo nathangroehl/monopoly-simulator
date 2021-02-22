@@ -76,75 +76,68 @@ namespace MonopolyStatistics.Helper
         public void DrawChanceCard()
         {
             string pickedCard = chance.PickCard();
-            if (pickedCard == "Advance to Go")
+            Dictionary<string, int> advanceTo = new Dictionary<string, int>();
+            advanceTo["Advance to Go"] = 0;
+            advanceTo["Advance to Reading Railroad"] = 5;
+            advanceTo["Advance to St Charles Place"] = 11;
+            advanceTo["Advance to Illinois Avenue"] = 24;
+            advanceTo["Go To Jail"] = 30;
+            advanceTo["Advance to Board Walk"] = 39;
+            advanceTo["Nearest Utility"] = 41;
+            advanceTo["Nearest Railroad"] = 42;
+            advanceTo["Go Back Three Spaces"] = 43;
+            if (pickedCard != "")
             {
-                token.AdvanceTo(0);
-            }
-            else if (pickedCard == "Go To Jail")
-            {
-                token.AdvanceTo(30);
-            }
-            else if (pickedCard == "Advance to Illinois Avenue")
-            {
-                token.AdvanceTo(24);
-            }
-            else if (pickedCard == "Advance to St Charles Place")
-            {
-                token.AdvanceTo(11);
-            }
-            else if (pickedCard == "Nearest Utility")
-            {
-                if (token.TileLocation < 12 || token.TileLocation > 27)
+                int dictValue = advanceTo[pickedCard];
+                if (dictValue < 41)
                 {
-                    token.AdvanceTo(12);
+                    token.AdvanceTo(advanceTo[pickedCard]);
                 }
-                else
+                else if (dictValue == 41)
                 {
-                    token.AdvanceTo(28);
+                    if (token.TileLocation < 12 || token.TileLocation > 27)
+                    {
+                        token.AdvanceTo(12);
+                    }
+                    else
+                    {
+                        token.AdvanceTo(28);
+                    }
                 }
-            }
-            else if (pickedCard == "Nearest Railroad")
-            {
-                if (token.TileLocation < 5 || token.TileLocation > 34)
+                else if (dictValue == 42)
                 {
-                    token.AdvanceTo(5);
+                    if (token.TileLocation < 5 || token.TileLocation > 34)
+                    {
+                        token.AdvanceTo(5);
+                    }
+                    else if (token.TileLocation < 15)
+                    {
+                        token.AdvanceTo(15);
+                    }
+                    else if (token.TileLocation < 25)
+                    {
+                        token.AdvanceTo(25);
+                    }
+                    else
+                    {
+                        token.AdvanceTo(35);
+                    }
                 }
-                else if (token.TileLocation < 15)
+                else if (dictValue == 43)
                 {
-                    token.AdvanceTo(15);
+                    token.Advance(-3);
                 }
-                else if (token.TileLocation < 25)
-                {
-                    token.AdvanceTo(25);
-                }
-                else
-                {
-                    token.AdvanceTo(35);
-                }
-            }
-            else if (pickedCard == "Go Back Three Spaces")
-            {
-                token.Advance(-3);
-            }
-            else if (pickedCard == "Advance to Reading Railroad")
-            {
-                token.AdvanceTo(5);
-            }
-            else if (pickedCard == "Advance to Board Walk")
-            {
-                token.AdvanceTo(39);
             }
         }
         public void DrawCommunityChestCard()
         {
             string pickedCard = communityChest.PickCard();
-            if (pickedCard == "Advance to Go")
+            Dictionary<string, int> advanceTo = new Dictionary<string, int>();
+            advanceTo["Advance to Go"] = 0;
+            advanceTo["Go To Jail"] = 30;
+            if (pickedCard != "")
             {
-                token.AdvanceTo(0);
-            }
-            else if (pickedCard == "Go To Jail")
-            {
-                token.AdvanceTo(30);
+                token.AdvanceTo(advanceTo[pickedCard]);
             }
         }
         public void TryToGetOutOfJail()
